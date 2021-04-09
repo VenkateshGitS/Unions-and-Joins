@@ -1,0 +1,59 @@
+select round(sum(sales))"Sales" from superstore;
+select country,round(sum(sales))"Sales" from superstore group by country order by country;
+select country,sales from superstore order by country;
+select subcategory,sum(profit) from superstore group by subcategory order by subcategory;
+select market,sum(sales)"venk1",sum(profit)"venki" from superstore group by market;
+select market,subcategory ,sum(sales)"Mini",sum(profit)"max" from superstore group by market,subcategory;
+select market, min(profit)"min", max(profit)"max" from superstore group by market;
+select country, round(sum(sales))"sales",round(sum(profit))"profit",round(min(profit))"profit",round(max(profit))"profit",round(avg(profit))"profit",median(profit)"profit" from superstore group by country;
+select country,sum(sales)"sum" from superstore group by country order by sum(sales) desc;
+select country,sum(sales) from superstore group by country having sum(sales)>300000;
+select subcategory, round(sum(profit)) from superstore group by subcategory having sum(sales) between 1000000 and 2000000;
+
+select country, round(sum(sales))"sales" from superstore group by country having sum(sales) between 1000 and 2000;
+select * from superstore;
+select region,productid, sum(sales)"sales",sum(profit)"profit" from superstore group by region,productid having sum(sales) between 1000 and 2000;
+select country category, sum(sales)"sales",sum(profit)"profit" from superstore group by country,category order by country,category;
+select country,sales from superstore order by country;
+select country, sum(sales)"sales" from superstore group by country;
+select country,sum(profit)"sales" from superstore group by country;
+select country,round(sum(sales)) from superstore group by country having sum(sales)>3000;
+select sales, round(sum(sales))"sales",round(sum(profit))"profit",round(min(profit))"profit",
+round(max(profit))"profit"
+,
+round(avg(profit))"profit",median(profit)"profit" from superstore group by sales;
+select sales,profit round(sum(sales)),"sales",round(sum(profit))"profit",round(min(profit))"profit",round(max(profit))"profit",round(avg(profit))"profit",median(profit)"profit" from superstore group by sales,profit;
+
+select subcategory,orderid from superstore order by subcategory;
+select subcategory, count(orderid);
+select country,count(orderid) from superstore where country in ('India', 'Australia','United States') group by country having count(orderid)>2000;
+select country,count(orderid) from superstore where country in ('China') group by country having count(orderid)>1000;
+select country,count(orderid) from superstore group by country having count(orderid)>2000 where country('India','Australia','United States');
+CREATE TABLE STUDENT(STUDENTID VARCHAR2(10),STUDENTNAME VARCHAR2(50),TUTION_FEE NUMBER(10,2), UNIVERSITY VARCHAR2(50));
+CREATE TABLE DEPARTMENT(DEPTID VARCHAR2(10),HOD VARCHAR2(50),STUDENTID VARCHAR2(10));
+
+select * from student;
+select * from department;
+select studentid from student 
+union all
+select studentid from department;
+
+select studentid from student 
+union
+select studentid from department;
+
+select studentid,studentname,university from student 
+union all
+select studentid,deptid,hod from department;
+
+select distinct country,null from superstore
+union all
+select country,countrycode from codes;
+select distinct country,null from superstore
+union all
+select country,countrycode from codes;
+select distinct studentid,studentname,university from student 
+union all
+select studentid,deptid,hod from department;
+
+select  * from cat;
